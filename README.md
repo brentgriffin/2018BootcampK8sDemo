@@ -26,7 +26,7 @@
 ### Access Hazelcast Mancenter
 1. run 'kubectl get svc'
 2. locate 'External IP' for hazelcast-mancenter-svc
-3. Open page in browser http://[External IP]/mancenter
+3. Open page in browser http://[External IP]:8080/mancenter
 
 
 
