@@ -291,9 +291,6 @@ spec:
         app: dotcms
     spec:
       volumes:
-#      - name: cmslocal
-#        persistentVolumeClaim:
-#          claimName: cms-local-pvc
       - name: cmsshared
         persistentVolumeClaim:
           claimName: cms-shared-pvc
@@ -321,8 +318,6 @@ spec:
         - name: PROVIDER_HAZELCAST_DNSNAMES
           value: hazelcast-svc
         volumeMounts:
-#        - name: cmslocal
-#          mountPath: /data/local
         - name: cmsshared
           mountPath: /data/shared
         - name: licensefile
