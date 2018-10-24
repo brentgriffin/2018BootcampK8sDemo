@@ -96,7 +96,6 @@ services:
       - http
     volumes:
       - cms-shared:/data/shared
-      # - cms-local:/data/local
       #- [serverpath]/license.dat:/data/local/dotsecure/license/license.dat
       - ../configmap/license.zip:/data/shared/assets/license.zip
     networks:
