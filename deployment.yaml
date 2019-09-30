@@ -299,7 +299,7 @@ spec:
           name: dotcmslicensepack
       containers:
       - name: dotcms
-        image: dotcms/dotcms:5.0.2-alpha
+        image: dotcms/dotcms:5.1.6
         imagePullPolicy: Always
         ports:
         - containerPort: 8081
