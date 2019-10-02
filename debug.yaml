@@ -51,6 +51,8 @@ spec:
       labels:
         app: postgres
     spec:
+#      securityContext:
+#        runAsUser: 0
       volumes:
       - name: dbdata
         persistentVolumeClaim:
@@ -58,10 +60,22 @@ spec:
       initContainers:
       - name: pgsql-data-permission-fix
         image: busybox:1.26.2
+#        command: ["/bin/chmod","-R","777", "/bitnami/postgresql"]
         command: ["/bin/chown","-R","1001", "/bitnami/postgresql"]
         volumeMounts:
         - name: dbdata
           mountPath: /bitnami/postgresql
+#      initContainers:
+#      - name: test
+#        image: busybox:1.26.2
+#        image: bitnami/postgresql:9.6
+#        command:
+#        - sh
+#        - -c
+#        - ls -la /bitnami/postgresql > output.txt && cat output.txt && while true; do sleep 86400; done
+#        volumeMounts:
+#        - name: dbdata
+#          mountPath: /bitnami/postgresql
       containers:
       - name: postgres
         image: bitnami/postgresql:9.6
@@ -81,6 +95,8 @@ spec:
         volumeMounts:
         - name: dbdata
           mountPath: /bitnami/postgresql
+#        securityContext:
+#          runAsUser: 0
       restartPolicy: Always
 ---
 apiVersion: v1
@@ -327,6 +343,7 @@ spec:
           - sh
           - -c
           - mkdir -p /data/shared/assets && cp /license.zip /data/shared/assets/.  && chown -R 1000000000 /data/shared
+#          - while true; do sleep 86400; done
         volumeMounts:
         - name: cmsshared
           mountPath: /data/shared
